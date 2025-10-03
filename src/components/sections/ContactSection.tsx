@@ -2,32 +2,33 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa';
 
 const socialLinks = [
   {
     name: 'GitHub',
-    icon: '🐙',
+    icon: FaGithub,
     url: 'https://github.com/AldiPutraNugraha',
     color: 'hover:text-gray-400',
     bgHover: 'hover:bg-gray-600',
   },
   {
     name: 'LinkedIn',
-    icon: '💼',
+    icon: FaLinkedin,
     url: 'https://www.linkedin.com/in/aldi-p-800aaa1a7/',
     color: 'hover:text-blue-400',
     bgHover: 'hover:bg-blue-600',
   },
   {
     name: 'Instagram',
-    icon: '📷',
+    icon: FaInstagram,
     url: 'https://www.instagram.com/aldiptrngrh_/',
     color: 'hover:text-pink-400',
     bgHover: 'hover:bg-pink-600',
   },
   {
     name: 'Email',
-    icon: '✉️',
+    icon: FaEnvelope,
     url: 'mailto:aldiputra430@gmail.com',
     color: 'hover:text-red-400',
     bgHover: 'hover:bg-red-600',
@@ -184,7 +185,7 @@ export default function ContactSection() {
                     transition={{ duration: 0.4, delay: 0.5 + index * 0.1 }}
                     whileHover={{ scale: 1.05, y: -5 }}
                   >
-                    <span className="text-3xl">{social.icon}</span>
+                    <social.icon className="text-3xl" />
                     <span className="text-gray-300 font-medium group-hover:text-white">
                       {social.name}
                     </span>

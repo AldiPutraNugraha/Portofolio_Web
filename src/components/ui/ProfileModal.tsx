@@ -3,6 +3,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from 'react-icons/fa';
 
 interface ProfileModalProps {
   isOpen: boolean;
@@ -133,7 +134,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-gray-600 rounded-lg transition-all duration-300 text-white text-sm"
                   >
-                    <span>🐙</span>
+                    <FaGithub className="text-xl" />
                     <span>GitHub</span>
                   </a>
                   <a
@@ -142,14 +143,14 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-blue-600 rounded-lg transition-all duration-300 text-white text-sm"
                   >
-                    <span>💼</span>
+                    <FaLinkedin className="text-xl" />
                     <span>LinkedIn</span>
                   </a>
                   <a
                     href="mailto:aldiputra430@gmail.com"
                     className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-red-600 rounded-lg transition-all duration-300 text-white text-sm"
                   >
-                    <span>✉️</span>
+                    <FaEnvelope className="text-xl" />
                     <span>Email</span>
                   </a>
                   <a
@@ -158,7 +159,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-pink-600 rounded-lg transition-all duration-300 text-white text-sm"
                   >
-                    <span>📷</span>
+                    <FaInstagram className="text-xl" />
                     <span>Instagram</span>
                   </a>
                 </div>

@@ -102,9 +102,17 @@ export default function ProjectsSection() {
             <motion.div
               key={project.id}
               variants={item}
-              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 overflow-hidden hover:border-purple-500 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20"
-              whileHover={{ scale: 1.05, y: -5 }}
-              transition={{ duration: 0.3 }}
+              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 overflow-hidden"
+              whileHover={{ 
+                scale: 1.05, 
+                y: -5,
+                borderColor: '#a855f7',
+                boxShadow: '0 25px 50px -12px rgba(168, 85, 247, 0.25)'
+              }}
+              transition={{ 
+                duration: 0.3,
+                ease: "easeOut"
+              }}
             >
               {/* Project Image/Icon */}
               <div className={`bg-gradient-to-br ${project.color} p-12 flex items-center justify-center`}>
