@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import ProfileModal from './ProfileModal';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,30 +26,34 @@ export default function Navbar() {
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-800'
-          : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo / Profile */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative w-14 h-14 rounded-full overflow-hidden border-3 border-purple-500 group-hover:border-pink-500 group-hover:scale-110 transition-all duration-300 shadow-lg shadow-purple-500/50">
-              {/* Ganti src dengan path gambar profile Anda */}
-              <Image
-                src="/aldi.jpeg"
-                alt="Profile"
-                fill
-                className="object-cover"
-              />
-            </div>
-            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
-              Profile
-            </span>
-          </a>
+    <>
+      <nav
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'bg-slate-900/95 backdrop-blur-md shadow-lg border-b border-slate-800'
+            : 'bg-transparent'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Logo / Profile */}
+            <button 
+              onClick={() => setIsProfileModalOpen(true)}
+              className="flex items-center gap-3 group cursor-pointer"
+            >
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border-3 border-purple-500 group-hover:border-pink-500 group-hover:scale-110 transition-all duration-300 shadow-lg shadow-purple-500/50">
+                {/* Ganti src dengan path gambar profile Anda */}
+                <Image
+                  src="/aldi.jpeg"
+                  alt="Profile"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
+                Profile
+              </span>
+            </button>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
@@ -115,5 +121,12 @@ export default function Navbar() {
         )}
       </div>
     </nav>
+
+    {/* Profile Modal */}
+    <ProfileModal 
+      isOpen={isProfileModalOpen} 
+      onClose={() => setIsProfileModalOpen(false)} 
+    />
+    </>
   );
 }
