@@ -39,9 +39,10 @@ export default function Navbar() {
             {/* Logo / Profile */}
             <button 
               onClick={() => setIsProfileModalOpen(true)}
-              className="flex items-center gap-3 group cursor-pointer"
+              className="flex items-center gap-3 group cursor-pointer relative"
+              title="Klik untuk melihat profile lengkap"
             >
-              <div className="relative w-14 h-14 rounded-full overflow-hidden border-3 border-purple-500 group-hover:border-pink-500 group-hover:scale-110 transition-all duration-300 shadow-lg shadow-purple-500/50">
+              <div className="relative w-14 h-14 rounded-full overflow-hidden border-3 border-purple-500 group-hover:border-pink-500 group-hover:scale-125 transition-all duration-300 shadow-lg shadow-purple-500/50 group-hover:shadow-pink-500/70 group-hover:shadow-xl animate-pulse-subtle">
                 {/* Ganti src dengan path gambar profile Anda */}
                 <Image
                   src="/aldi.jpeg"
@@ -50,9 +51,14 @@ export default function Navbar() {
                   className="object-cover"
                 />
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
-                Profile
-              </span>
+              <div className="flex flex-col items-start">
+                <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text group-hover:from-pink-400 group-hover:to-purple-500 transition-all duration-300">
+                  Profile
+                </span>
+                <span className="text-xs text-gray-400 group-hover:text-purple-400 transition-colors duration-300">
+                  Klik untuk info →
+                </span>
+              </div>
             </button>
 
           {/* Desktop Menu */}
