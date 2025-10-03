@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 const projects = [
   {
@@ -53,11 +54,34 @@ const projects = [
   },
 ];
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const item = {
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0 }
+};
+
 export default function ProjectsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+
   return (
-    <section id="projects" className="py-20 px-6 bg-gradient-to-b from-slate-900 to-slate-800">
+    <section id="projects" className="py-20 px-6 bg-gradient-to-b from-slate-900 to-slate-800" ref={ref}>
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Project <span className="bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">Portfolio</span>
           </h2>
@@ -66,13 +90,21 @@ export default function ProjectsSection() {
             Berikut adalah beberapa project yang telah saya kerjakan. 
             Setiap project dibuat dengan dedikasi dan perhatian terhadap detail.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <motion.div 
+          className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          variants={container}
+          initial="hidden"
+          animate={isInView ? "show" : "hidden"}
+        >
           {projects.map((project) => (
-            <div
+            <motion.div
               key={project.id}
-              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 overflow-hidden hover:border-purple-500 transition-all duration-300 hover:transform hover:scale-105 hover:shadow-2xl hover:shadow-purple-500/20"
+              variants={item}
+              className="group bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 overflow-hidden hover:border-purple-500 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/20"
+              whileHover={{ scale: 1.05, y: -5 }}
+              transition={{ duration: 0.3 }}
             >
               {/* Project Image/Icon */}
               <div className={`bg-gradient-to-br ${project.color} p-12 flex items-center justify-center`}>
@@ -110,16 +142,25 @@ export default function ProjectsSection() {
                   </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* View More Button */}
-        <div className="text-center mt-12">
-          <button className="px-8 py-4 bg-slate-800 border border-slate-700 text-purple-400 rounded-full font-semibold hover:bg-purple-500 hover:text-white hover:border-purple-500 transition-all duration-300">
+        <motion.div 
+          className="text-center mt-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <motion.button 
+            className="px-8 py-4 bg-slate-800 border border-slate-700 text-purple-400 rounded-full font-semibold hover:bg-purple-500 hover:text-white hover:border-purple-500 transition-all duration-300"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Lihat Semua Project →
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       </div>
     </section>
   );

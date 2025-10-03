@@ -1,6 +1,9 @@
 'use client';
 
 import React from 'react';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const skills = [
   { name: 'React.js', level: 90 },
@@ -12,20 +15,34 @@ const skills = [
 ];
 
 export default function AboutSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.3 });
+
   return (
-    <section id="about" className="py-20 px-6 bg-slate-900">
+    <section id="about" className="py-20 px-6 bg-slate-900" ref={ref}>
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Tentang <span className="bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">Saya</span>
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-purple-500 to-pink-500 mx-auto"></div>
-        </div>
+        </motion.div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* About Text */}
           <div className="space-y-6">
-            <div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 hover:border-purple-500 transition-all duration-300">
+            <motion.div 
+              className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 hover:border-purple-500 transition-all duration-300"
+              initial={{ opacity: 0, x: -50 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ scale: 1.02 }}
+            >
               <h3 className="text-2xl font-bold text-white mb-4">
                 Siapa Saya?
               </h3>
@@ -39,44 +56,67 @@ export default function AboutSection() {
                 pengembangan solusi yang scalable, maintainable, dan user-friendly. 
                 Saya selalu antusias untuk belajar teknologi baru dan menghadapi tantangan baru.
               </p>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-3 gap-4">
-              <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 text-center hover:border-purple-500 transition-all duration-300">
-                <div className="text-3xl font-bold text-purple-400 mb-2">5+</div>
-                <div className="text-gray-400 text-sm">Projects</div>
-              </div>
-              <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 text-center hover:border-purple-500 transition-all duration-300">
-                <div className="text-3xl font-bold text-pink-400 mb-2">2+</div>
-                <div className="text-gray-400 text-sm">Years Exp</div>
-              </div>
-              <div className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 text-center hover:border-purple-500 transition-all duration-300">
-                <div className="text-3xl font-bold text-yellow-400 mb-2">10+</div>
-                <div className="text-gray-400 text-sm">Technologies</div>
-              </div>
-            </div>
+            <motion.div 
+              className="grid grid-cols-3 gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              {[
+                { value: '5+', label: 'Projects', color: 'text-purple-400' },
+                { value: '2+', label: 'Years Exp', color: 'text-pink-400' },
+                { value: '10+', label: 'Technologies', color: 'text-yellow-400' }
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className="bg-slate-800/50 backdrop-blur-sm p-6 rounded-xl border border-slate-700 text-center hover:border-purple-500 transition-all duration-300"
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                  transition={{ duration: 0.5, delay: 0.5 + index * 0.1 }}
+                >
+                  <div className={`text-3xl font-bold ${stat.color} mb-2`}>{stat.value}</div>
+                  <div className="text-gray-400 text-sm">{stat.label}</div>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
 
           {/* Skills */}
-          <div className="space-y-4">
+          <motion.div 
+            className="space-y-4"
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
             <h3 className="text-2xl font-bold text-white mb-6">
               Keahlian Saya
             </h3>
             {skills.map((skill, index) => (
-              <div key={index} className="space-y-2">
+              <motion.div 
+                key={index} 
+                className="space-y-2"
+                initial={{ opacity: 0, x: 20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
+              >
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-300 font-medium">{skill.name}</span>
                   <span className="text-purple-400">{skill.level}%</span>
                 </div>
                 <div className="w-full bg-slate-700 rounded-full h-3 overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full transition-all duration-1000 ease-out"
-                    style={{ width: `${skill.level}%` }}
-                  ></div>
+                  <motion.div
+                    className="h-full bg-gradient-to-r from-purple-500 to-pink-500 rounded-full"
+                    initial={{ width: 0 }}
+                    animate={isInView ? { width: `${skill.level}%` } : { width: 0 }}
+                    transition={{ duration: 1, delay: 0.5 + index * 0.1, ease: "easeOut" }}
+                  ></motion.div>
                 </div>
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
