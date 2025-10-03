@@ -111,7 +111,7 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                     <span>GitHub</span>
                   </a>
                   <a
-                    href="https://linkedin.com"
+                    href="https://www.linkedin.com/in/aldi-p-800aaa1a7/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-blue-600 rounded-lg transition-all duration-300 text-white text-sm"
@@ -120,14 +120,14 @@ export default function ProfileModal({ isOpen, onClose }: ProfileModalProps) {
                     <span>LinkedIn</span>
                   </a>
                   <a
-                    href="mailto:your.email@example.com"
+                    href="mailto:aldiputra430@gmail.com"
                     className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-red-600 rounded-lg transition-all duration-300 text-white text-sm"
                   >
                     <span>✉️</span>
                     <span>Email</span>
                   </a>
                   <a
-                    href="https://instagram.com"
+                    href="https://www.instagram.com/aldiptrngrh_/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 px-4 py-2 bg-slate-700 hover:bg-pink-600 rounded-lg transition-all duration-300 text-white text-sm"

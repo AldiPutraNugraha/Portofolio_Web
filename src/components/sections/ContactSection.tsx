@@ -8,30 +8,28 @@ const socialLinks = [
     icon: '🐙',
     url: 'https://github.com/AldiPutraNugraha',
     color: 'hover:text-gray-400',
+    bgHover: 'hover:bg-gray-600',
   },
   {
     name: 'LinkedIn',
     icon: '💼',
-    url: '#',
+    url: 'https://www.linkedin.com/in/aldi-p-800aaa1a7/',
     color: 'hover:text-blue-400',
-  },
-  {
-    name: 'Twitter',
-    icon: '🐦',
-    url: '#',
-    color: 'hover:text-sky-400',
+    bgHover: 'hover:bg-blue-600',
   },
   {
     name: 'Instagram',
     icon: '📷',
-    url: '#',
+    url: 'https://www.instagram.com/aldiptrngrh_/',
     color: 'hover:text-pink-400',
+    bgHover: 'hover:bg-pink-600',
   },
   {
     name: 'Email',
     icon: '✉️',
-    url: 'mailto:your.email@example.com',
+    url: 'mailto:aldiputra430@gmail.com',
     color: 'hover:text-red-400',
+    bgHover: 'hover:bg-red-600',
   },
 ];
 
@@ -144,7 +142,7 @@ export default function ContactSection() {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center space-x-3 p-4 bg-slate-700/50 rounded-xl border border-slate-600 hover:border-purple-500 transition-all duration-300 ${social.color} group`}
+                    className={`flex items-center space-x-3 p-4 bg-slate-700/50 rounded-xl border border-slate-600 hover:border-purple-500 ${social.bgHover} transition-all duration-300 group`}
                   >
                     <span className="text-3xl">{social.icon}</span>
                     <span className="text-gray-300 font-medium group-hover:text-white">
