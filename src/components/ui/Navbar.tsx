@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -32,10 +33,19 @@ export default function Navbar() {
     >
       <div className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <a href="#" className="text-2xl font-bold">
-            <span className="bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
-              APN
+          {/* Logo / Profile */}
+          <a href="#" className="flex items-center gap-3 group">
+            <div className="relative w-14 h-14 rounded-full overflow-hidden border-3 border-purple-500 group-hover:border-pink-500 group-hover:scale-110 transition-all duration-300 shadow-lg shadow-purple-500/50">
+              {/* Ganti src dengan path gambar profile Anda */}
+              <Image
+                src="/aldi.jpeg"
+                alt="Profile"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <span className="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 text-transparent bg-clip-text">
+              Profile
             </span>
           </a>
 
